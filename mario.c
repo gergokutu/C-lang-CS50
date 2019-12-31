@@ -1,26 +1,26 @@
 #include <stdio.h>
 
 int get_positive(void);
-void build_pyramid(int height);
+void build_staircase(int height);
 
 int main(void)
 {
   int height = get_positive();
   printf("Height: %i\n", height);
-  build_pyramid(height);
+  build_staircase(height);
 }
 
 int get_positive(void)
 {
   // Get input from user
   // int number;
-  // printf("Ensure the height of thy pyramid /1-8/: ");
+  // printf("Ensure the height of thy staircase /1-8/: ");
   // scanf("%d", &number);
   int number;
 
   do
   {
-    printf("Ensure the height of thy pyramid /1-8/: ");
+    printf("Ensure the height of thy staircase /1-8/: ");
     scanf("%d", &number);
   }
   while ( number < 1 || number > 8 );
@@ -28,7 +28,7 @@ int get_positive(void)
   return number;
 }
 
-void build_pyramid(int height)
+void build_staircase(int height)
 {
   for (int i = 0; i < height; i++)
   {
