@@ -32,7 +32,7 @@ void build_pyramid(int height)
 {
   for (int i = 0; i < height; i++)
   {
-    for (int space = (height - i); space > 0; space--)
+    for (int space = (height - i - 1); space > 0; space--)
     {
       printf(" ");
     }
