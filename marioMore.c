@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 int get_positive(void);
-void build_staircase_two(int height);
+void build_pyramid(int height);
 
 int main(void)
 {
   int height = get_positive();
   printf("Height: %i\n", height);
-  build_staircase_two(height);
+  build_pyramid(height);
 }
 
 int get_positive(void)
@@ -24,7 +24,7 @@ int get_positive(void)
   return number;
 }
 
-void build_staircase_two(int height)
+void build_pyramid(int height)
 {
   for (int i = 0; i < height; i++)
   {
