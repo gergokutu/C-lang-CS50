@@ -11,7 +11,9 @@ int main(void)
   scanf("%s", str);
 
   printf("Output:\n\n");
-  for (int i = 0, n = strlen(str); i < n; i++)
+  // for (int i = 0, n = strlen(str); i < n; i++)
+  // or
+  for (int i = 0; str[i] != '\0'; i++)
   {
     printf("%c\n", str[i]);
   }
