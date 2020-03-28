@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 
 int main(void)
 {
@@ -15,5 +14,6 @@ int main(void)
 
     // Print Emma's name
     printf("%s\n", names[0]);
-    printf("%c%c%c%c\n", names[0][0], names[0][1], names[0][2], names[0][3]);
+    // print the null terminating character as well!!!
+    printf("%c%c%c%c%d\n", names[0][0], names[0][1], names[0][2], names[0][3], names[0][4]);
 }
