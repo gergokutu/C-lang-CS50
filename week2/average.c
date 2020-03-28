@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// const naming convention is the capitalization
 const int N = 3;
 
 int main(void)
