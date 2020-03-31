@@ -25,28 +25,18 @@ int main(void)
 
     for (int i = 0; i < strlen(paragraph); i++)
     {
-        // letters
-        if (paragraph[i] >= 'a' && paragraph[i] <= 'z')
-        {
-            letters++;
-        }
-        if (paragraph[i] >= 'A' && paragraph[i] <= 'Z')
-        {
-            letters++;
-        }
-        // words
-        if (paragraph[i] == ' ')
-        {
-            words++;
-        }
-        // sentences
-        if ((paragraph[i] == '.' || paragraph[i] == '!' || paragraph[i] == '?')
-            && paragraph[i - 1] != '.'
-            && paragraph[i - 1] != '!'
-            && paragraph[i - 1] != '?')
-        {
-            sentences++;
-        }
+       if ((paragraph[i] >= 'a' && paragraph[i] <= 'z') || (paragraph[i] >= 'A' && paragraph[i] <= 'Z'))
+       {
+           letters++;
+       }
+       else if (paragraph[i] == ' ')
+       {
+           words++;
+       }
+       else if (paragraph[i] == '.' || paragraph[i] == '!' || paragraph[i] == '?')
+       {
+           sentences++;
+       }
     }
 
     // User feedback about the details
@@ -57,14 +47,14 @@ int main(void)
     printf("Sentences: %d\n\n", sentences);
 
     // apply the Coleman-Liau index
-    float L = letters * 100 / words;
-    float S = sentences * 100 / words;
+    float L = (float) letters * 100 / words;
+    float S = (float) sentences * 100 / words;
     float index = 0.0588 * L - 0.296 * S - 15.8;
 
     printf("INDEX: %f\n", index);
 
     // round the result
-    int grade = round(index);
+    float grade = round(index);
 
     // ensure proper feedback on the index
     if (grade < 1)
@@ -77,7 +67,7 @@ int main(void)
     }
     else
     {
-        printf("GRADE %d\n", grade);
+        printf("GRADE %d\n", (int) grade);
     }
 
     printf("\n************\n\n");
