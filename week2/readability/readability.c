@@ -39,19 +39,24 @@ int main(void)
       && paragraph[i - 1] != '?') sentences++;
   }
 
+  // User feedback about the details
   printf("************\n\n");
   printf("Results: \n");
   printf("Letters: %d\n", letters);
   printf("Words: %d\n", words);
   printf("Sentences: %d\n\n", sentences);
 
+  // apply the Coleman-Liau index
   float L = letters * 100 / words;
   float S = sentences * 100 / words;
   float index = 0.0588 * L - 0.296 * S - 15.8;
 
   printf("INDEX: %f\n", index);
+
+  // round the result
   int grade = round(index);
   
+  // ensure proper feedback on the index
   if (grade < 1) {
     printf("Before GRADE 1\n");
   }
