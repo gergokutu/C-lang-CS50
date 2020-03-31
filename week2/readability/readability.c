@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 const int N = 100000;
 
@@ -11,7 +12,7 @@ int main(void)
   // scanf("%s", paragraph);
   // accept a paragraph as input
   fgets(paragraph, N, stdin);
-
+  printf("\n************\n\n");
   printf("The ensured paragraph is:\n\n%s\n", paragraph);
 
   // count the letters, words and sentences in the paragraph
@@ -38,9 +39,32 @@ int main(void)
       && paragraph[i - 1] != '?') sentences++;
   }
 
+  printf("************\n\n");
+  printf("Results: \n");
   printf("Letters: %d\n", letters);
   printf("Words: %d\n", words);
-  printf("Sentences: %d\n", sentences);
+  printf("Sentences: %d\n\n", sentences);
+
+  float L = letters * 100 / words;
+  float S = sentences * 100 / words;
+  float index = 0.0588 * L - 0.296 * S - 15.8;
+
+  printf("INDEX: %f\n", index);
+  int grade = round(index);
+  
+  if (grade < 1) {
+    printf("Before GRADE 1\n");
+  }
+  else if (grade >= 16)
+  {
+    printf("GRADE 16+\n");
+  }
+  else
+  {
+    printf("GRADE %d\n", grade);
+  }
+
+  printf("\n************\n\n");
   
   return 0;
 }
