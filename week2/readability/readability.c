@@ -17,11 +17,11 @@ int main(void)
 
   // count the letters, words and sentences in the paragraph
   // think about the ASCII codes!
-  int letters;
+  int letters = 0;
   // words start from zero => Hey! or hey
   // 1 word but not a sentence
   int words = 1;
-  int sentences;
+  int sentences = 0;
 
   for (int i = 0; i < strlen(paragraph); i++)
   {
