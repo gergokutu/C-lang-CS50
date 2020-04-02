@@ -2,6 +2,8 @@
 #include <string.h>
 #include <ctype.h>
 
+const int N = 10000;
+
 // accept a single command-line argument
 int main(int argc, char **argv)
 {
@@ -46,6 +48,11 @@ int main(int argc, char **argv)
       }
     }
   }
+  
+  // Prompt user for plaintext
+  printf("plaintext: ");
+  char plaintext[N];
+  fgets(plaintext, N, stdin);
 
   printf("Success\n");
   return 0;
