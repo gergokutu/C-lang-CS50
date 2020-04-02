@@ -1,26 +1,41 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdbool.h>
 
 const int N = 10000;
+bool validate_key(char key[]);
+char *prompt_plaintext(int length);
+void print_ciphertext(char *plaintext, char *key);
 
-// accept a single command-line argument
 int main(int argc, char **argv)
 {
-  // Check that program was run with one command-line argument
   if (argc != 2)
   {
     printf("Usage: ./substitution key\n");
     return 1;
   }
 
+  if (!validate_key(argv[1]))
+  {
+    return 1;
+  }
+
+  char *plaintext = prompt_plaintext(N);
+  print_ciphertext(plaintext, argv[1]);
+
+  printf("\n");
+  return 0;
+}
+
+bool validate_key(char key[])
+{
   // Check if the key is 26 char long
-  char *key = argv[1];
   int key_length = strlen(key);
   if (key_length != 26)
   {
     printf("Usage: ./substitution key\nKey should be 26 characters long!\n");
-    return 1;
+    return 0;
   }
 
   // Check if the key consists of only letters - case-insensitive
@@ -30,7 +45,7 @@ int main(int argc, char **argv)
     if (letter < 'A' || letter > 'Z')
     {
       printf("Usage: ./substitution key\nKey should contain only letters!\n");
-      return 1;
+      return 0;
     }
   }
 
@@ -42,16 +57,25 @@ int main(int argc, char **argv)
       if ((toupper(key[i]) == toupper(key[j])) && i != j)
       {
         printf("Usage: ./substitution key\nKey should contain only unique letters!\n");
-        return 1;
+        return 0;
       }
     }
   }
 
-  // Prompt user for plaintext
-  printf("plaintext: ");
-  char plaintext[N];
-  fgets(plaintext, N, stdin);
+  return 1;
+}
 
+char *prompt_plaintext(int length)
+{
+  printf("plaintext: ");
+  char text[N];
+  fgets(text, N, stdin);
+
+  return text;
+}
+
+void print_ciphertext(char *plaintext, char *key)
+{
   printf("ciphertext: ");
 
   char *abc = "abcdefghijklmnopqrstuvwxyz";
@@ -78,9 +102,6 @@ int main(int argc, char **argv)
     {
       // if not a letter > just return the special char itself
       printf("%c", plaintext[i]);
-    } 
+    }
   }
-
-  printf("\n");
-  return 0;
 }
