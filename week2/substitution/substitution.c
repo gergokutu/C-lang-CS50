@@ -54,6 +54,29 @@ int main(int argc, char **argv)
   char plaintext[N];
   fgets(plaintext, N, stdin);
 
-  printf("Success\n");
+  printf("ciphertext: ");
+
+  
+  char *abc = "abcdefghijklmnopqrstuvwxyz";
+  int plain_length = strlen(plaintext);
+  char ciphertext[plain_length];
+
+  // implement cipher algorithm
+  // Iterate over each character of the plaintext:
+  for (int i = 0; i < plain_length; i++)
+  {
+    for (int j = 0; j < strlen(abc); j++)
+    {
+      // printf("plaintext[i]: %c --- abc[j]: %c\n", plaintext[i], abc[j]);
+      // printf("I: %d --- J: %d\n", i, j);
+      if (plaintext[i] == abc[j])
+      {
+        printf("%c", key[j]);
+        // printf("%c", ciphertext[i] == key[j]);
+      } 
+    }
+  }
+
+  printf("\n");
   return 0;
 }
