@@ -69,9 +69,10 @@ int main(int argc, char **argv)
     {
       // printf("plaintext[i]: %c --- abc[j]: %c\n", plaintext[i], abc[j]);
       // printf("I: %d --- J: %d\n", i, j);
-      if (plaintext[i] == abc[j])
+      if (tolower(plaintext[i]) == abc[j])
       {
-        printf("%c", key[j]);
+        // case sensitivity
+        isupper(plaintext[i]) ? printf("%c", toupper(key[j])) : printf("%c", tolower(key[j]));
         // printf("%c", ciphertext[i] == key[j]);
       } 
     }
