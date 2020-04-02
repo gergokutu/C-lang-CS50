@@ -32,6 +32,21 @@ int main(int argc, char **argv)
     }
   }
 
+  // Check if the key does not consist of repeating characters
+  for (int i = 0; i < key_length; i++)
+  {
+    for (int j = 1; j < key_length; j++)
+    {
+      // printf("key[i]: %c --- key[j]: %c\n", key[i], key[j]);
+      // printf("I: %d --- J: %d\n", i, j);
+      if ((toupper(key[i]) == toupper(key[j])) && i != j)
+      {
+        printf("Usage: ./substitution key\nKey should contain only unique letters!\n");
+        return 1;
+      }
+    }
+  }
+
   printf("Success\n");
   return 0;
 }
