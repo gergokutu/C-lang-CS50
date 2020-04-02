@@ -39,8 +39,6 @@ int main(int argc, char **argv)
   {
     for (int j = 1; j < key_length; j++)
     {
-      // printf("key[i]: %c --- key[j]: %c\n", key[i], key[j]);
-      // printf("I: %d --- J: %d\n", i, j);
       if ((toupper(key[i]) == toupper(key[j])) && i != j)
       {
         printf("Usage: ./substitution key\nKey should contain only unique letters!\n");
@@ -48,7 +46,7 @@ int main(int argc, char **argv)
       }
     }
   }
-  
+
   // Prompt user for plaintext
   printf("plaintext: ");
   char plaintext[N];
@@ -56,7 +54,6 @@ int main(int argc, char **argv)
 
   printf("ciphertext: ");
 
-  
   char *abc = "abcdefghijklmnopqrstuvwxyz";
   int plain_length = strlen(plaintext);
   char ciphertext[plain_length];
@@ -65,17 +62,23 @@ int main(int argc, char **argv)
   // Iterate over each character of the plaintext:
   for (int i = 0; i < plain_length; i++)
   {
-    for (int j = 0; j < strlen(abc); j++)
+    // check for letters
+    if (isalpha(plaintext[i]))
     {
-      // printf("plaintext[i]: %c --- abc[j]: %c\n", plaintext[i], abc[j]);
-      // printf("I: %d --- J: %d\n", i, j);
-      if (tolower(plaintext[i]) == abc[j])
+      for (int j = 0; j < strlen(abc); j++)
       {
-        // case sensitivity
-        isupper(plaintext[i]) ? printf("%c", toupper(key[j])) : printf("%c", tolower(key[j]));
-        // printf("%c", ciphertext[i] == key[j]);
-      } 
+        if (tolower(plaintext[i]) == abc[j])
+        {
+          // make it case sensitive
+          isupper(plaintext[i]) ? printf("%c", toupper(key[j])) : printf("%c", tolower(key[j]));
+        }
+      }
     }
+    else
+    {
+      // if not a letter > just return the special char itself
+      printf("%c", plaintext[i]);
+    } 
   }
 
   printf("\n");
