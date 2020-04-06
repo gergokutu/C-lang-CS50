@@ -20,6 +20,7 @@ void draw(int h)
   // base case, stop condition
   if (h == 0)
   {
+    // do not do anything
     return;
   }
 
