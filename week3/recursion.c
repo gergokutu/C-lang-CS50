@@ -17,12 +17,14 @@ int main(void)
 void draw(int h)
 {
   // If nothing to draw > exit
+  // base case, stop condition
   if (h == 0)
   {
     return;
   }
 
   // Draw pyramid with height - 1
+  // recursion
   draw(h - 1);
 
   for (int i = 0; i < h; i++)
