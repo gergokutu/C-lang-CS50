@@ -12,16 +12,51 @@ int main(void)
   return 0;
 }
 
+// // my 1st
+// int fact(int n)
+// {
+//   if (n == 1)
+//   {
+//     return 1;
+//   }
+
+//   return n * fact(n - 1);  
+// }
+
+// // shortest > 1 liner with ternary
 int fact(int n)
 {
-  if (n == 1)
-  {
-    return 1;
-  }
-
-  return n * fact(n - 1);  
+  return n == 1 ? 1 : n * fact(n - 1);  
 }
 
+// // shorter
+// int fact(int n)
+// {
+//   if (n == 1) return 1;
+//   return n * fact(n - 1);  
+// }
+
+// // short
+// int fact(int n)
+// {
+//   if (n == 1) return 1;
+//   else return n * fact(n - 1);  
+// }
+
+// // // CS50
+// int fact(int n)
+// {
+//   if (n == 1)
+//   {
+//     return 1;
+//   }
+//   else
+//   {
+//     return n * fact(n - 1);
+//   }  
+// }
+
+// // another
 // int fact(int n)
 // {
 //   if (n >= 1)
