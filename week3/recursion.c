@@ -28,6 +28,7 @@ void draw(int h)
   // recursion
   draw(h - 1);
 
+  // add the additional row
   for (int i = 0; i < h; i++)
   {
     printf("#");
