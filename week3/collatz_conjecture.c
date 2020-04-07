@@ -32,9 +32,8 @@ int main(void)
 //   {
 //     return 0;
 //   }
-
 //   // multiple recursive cases
-//   if (n % 2 == 0)
+//   else if (n % 2 == 0)
 //   {
 //     return 1 + collatz(n / 2);
 //   }
