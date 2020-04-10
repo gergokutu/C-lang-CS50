@@ -1,7 +1,5 @@
 // make it out of CS50 IDE conform!
 // #include <cs50.h>
-// number only accept number > use while...!!!
-// follow the error messages
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -20,8 +18,7 @@ typedef struct
     char name[20];
     int votes;
     bool eliminated;
-}
-candidate;
+} candidate;
 
 // Array of candidates
 candidate candidates[MAX_CANDIDATES];
@@ -169,7 +166,6 @@ void tabulate(void)
                 break;
             }
         }
-
     }
     return;
 }
