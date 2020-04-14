@@ -15,14 +15,19 @@ int main(void)
   // Do not forget about the null terminating char!!!s
   char *copied = malloc(strlen(string) + 1);
 
-  // loop over the string and copy each element 1 by 1
+  // Loop over the string and copy each element 1 by 1
   // i < len + 1 - because of the null terminating char at the end!!!
   for (int i = 0, len = strlen(string); i < len + 1; i++)
   {
-    // assign original chars to copied
+    // Assign original chars to copied
     copied[i] = string[i];
   }
-
   printf("Copied string: %s\n", copied);
+
+  // Free up the memory allocated to copied
+  // To prevent memory leakage!
+  // program will behave the same way
+  free(copied);
+  
   return 0;
 }
