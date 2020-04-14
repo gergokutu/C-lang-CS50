@@ -19,6 +19,7 @@ int main(void)
     printf("%p\n", &s[1]);
     printf("%p\n", &s[2]);
     printf("%p\n", &s[3]);
+    // the null terminating char's address
     printf("%p\n\n", &s[4]);
 
     // Prints a string's chars
