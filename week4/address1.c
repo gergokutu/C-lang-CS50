@@ -2,7 +2,8 @@
 
 int main(void)
 {
-    char s[] = "EMMA";
+    // char s[] = "EMMA";
+    char *s = "EMMA";
     // Prints a string
     printf("1: %s\n", s);
 
