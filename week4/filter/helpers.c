@@ -155,3 +155,84 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
     return;
 }
+
+// Detect edges
+void edges(int height, int width, RGBTRIPLE image[height][width])
+{
+    // Create temporary values to store the calculations
+    float sumBlueX, sumGreenX, sumRedX, modifierX;
+    float sumBlueY, sumGreenY, sumRedY, modifierY;
+    // Counter needed the track the number of neighboor pixels
+    float counter;
+    // Create a temporary matrix of colors to keep original pixel colors
+    RGBTRIPLE temp[height][width];
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            //Resets values for every pixel
+            sumBlueY = 0.0;
+            sumGreenY = 0.0;
+            sumRedY = 0.0;
+            sumBlueX = 0.0;
+            sumGreenX = 0.0;
+            sumRedX = 0.0;
+
+            // Sum values for RGB applying the modifiers (X,Y)
+            // Consider the edges of the picture!!!
+            for (int h = -1; h < 2; h++)
+            {
+                // Consider the top and bottom edge
+                // If it is skip this iteration and continue with the next
+                if (i + h < 0 || i + h > height - 1)
+                {
+                    continue;
+                }
+
+                for (int w = -1; w < 2; w++)
+                {
+                    // Consider the left and right edge
+                    // If it is skip this iteration and continue with the next
+                    if (j + w < 0 || j + w > width - 1)
+                    {
+                        continue;
+                    }
+
+                    // Calculates modifiers for vertical and horizantal borders
+                    modifierX = (h + 1 * h - h * abs(w));
+                    modifierY = (w + 1 * w - w * abs(h));
+
+                    // Calculate sums for X
+                    sumBlueX += image[i + h][j + w].rgbtBlue * modifierX;
+                    sumGreenX += image[i + h][j + w].rgbtGreen * modifierX;
+                    sumRedX += image[i + h][j + w].rgbtRed * modifierX;
+
+                    // Calculate sums for Y
+                    sumBlueY += image[i + h][j + w].rgbtBlue * modifierY;
+                    sumGreenY += image[i + h][j + w].rgbtGreen * modifierY;
+                    sumRedY += image[i + h][j + w].rgbtRed * modifierY;
+                }
+            }
+
+            // Calculate RGB values by weighting X and Y
+            // Add it to the temporary matrix
+            // Do not forget to round > RGB values are ints!!!
+            temp[i][j].rgbtBlue = limit(round(sqrt(sumBlueX * sumBlueX + sumBlueY * sumBlueY)));
+            temp[i][j].rgbtGreen = limit(round(sqrt(sumGreenX * sumGreenX + sumGreenY * sumGreenY)));
+            temp[i][j].rgbtRed = limit(round(sqrt(sumRedX * sumRedX + sumRedY * sumRedY)));
+        }
+    }
+
+    // Copies values from temporary table to the original
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            image[i][j].rgbtRed = temp[i][j].rgbtRed;
+            image[i][j].rgbtGreen = temp[i][j].rgbtGreen;
+            image[i][j].rgbtBlue = temp[i][j].rgbtBlue;
+        }
+    }
+    return;
+}
